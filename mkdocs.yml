@@ -1,0 +1,27 @@
+site_name: SmartedAdSdk Android 接入文档
+site_description: SmartedAdSdk Android 应用接入、初始化、插屏广告和激励广告说明
+theme:
+  name: material
+  language: zh
+nav:
+  - 首页: index.md
+  - Android 接入指南:
+      - SDK 集成说明: Android接入指南/Android SDK集成说明.md
+      - SDK 初始化说明: Android接入指南/Android SDK初始化说明.md
+      - 插屏广告: Android接入指南/Android插屏广告.md
+      - 激励广告: Android接入指南/Android激励广告.md
+  - Unity 接入指南:
+      - SDK 集成与桥接: Unity接入指南/Unity SDK集成与桥接.md
+      - SDK 初始化说明: Unity接入指南/Unity SDK初始化说明.md
+      - 插屏广告: Unity接入指南/Unity插屏广告.md
+      - 激励广告: Unity接入指南/Unity激励广告.md
+  - Cocos Creator 接入指南:
+      - SDK 集成与桥接: Cocos Creator接入指南/Cocos Creator SDK集成与桥接.md
+      - SDK 初始化说明: Cocos Creator接入指南/Cocos Creator SDK初始化说明.md
+      - 插屏广告: Cocos Creator接入指南/Cocos Creator插屏广告.md
+      - 激励广告: Cocos Creator接入指南/Cocos Creator激励广告.md
+markdown_extensions:
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
