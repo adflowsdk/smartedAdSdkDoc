@@ -1,0 +1,1302 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SmartedAdSdk Android 应用接入、初始化、插屏广告和激励广告说明">
+      
+      
+      
+      
+        <link rel="prev" href="../../Unity%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Unity%E6%BF%80%E5%8A%B1%E5%B9%BF%E5%91%8A/">
+      
+      
+        <link rel="next" href="../Cocos%20Creator%20SDK%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%B4%E6%98%8E/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>SDK 集成与桥接 - SmartedAdSdk Android 接入文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cocos-creator-sdk" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="SmartedAdSdk Android 接入文档" class="md-header__button md-logo" aria-label="SmartedAdSdk Android 接入文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SmartedAdSdk Android 接入文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SDK 集成与桥接
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SmartedAdSdk Android 接入文档" class="md-nav__button md-logo" aria-label="SmartedAdSdk Android 接入文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SmartedAdSdk Android 接入文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android 接入指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Android 接入指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Android%20SDK%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 集成说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Android%20SDK%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 初始化说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Android%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    插屏广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Android%E6%BF%80%E5%8A%B1%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激励广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity 接入指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unity 接入指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Unity%20SDK%E9%9B%86%E6%88%90%E4%B8%8E%E6%A1%A5%E6%8E%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 集成与桥接
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Unity%20SDK%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 初始化说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Unity%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    插屏广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Unity%E6%BF%80%E5%8A%B1%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激励广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cocos Creator 接入指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cocos Creator 接入指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 集成与桥接
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 集成与桥接
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 调用关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-android-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 添加 Android SDK 依赖
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-androidmanifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 配置 AndroidManifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 添加 Java 桥接类
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-appactivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 在 AppActivity 中绑定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-javascripttypescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 添加 JavaScript/TypeScript 包装代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cocos%20Creator%20SDK%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 初始化说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cocos%20Creator%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    插屏广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cocos%20Creator%E6%BF%80%E5%8A%B1%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激励广告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 调用关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-android-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 添加 Android SDK 依赖
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-androidmanifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 配置 AndroidManifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 添加 Java 桥接类
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-appactivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 在 AppActivity 中绑定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-javascripttypescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 添加 JavaScript/TypeScript 包装代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cocos-creator-sdk">Cocos Creator SDK 集成与桥接<a class="headerlink" href="#cocos-creator-sdk" title="Permanent link">&para;</a></h1>
+<p>Cocos Creator 发布 Android 原生版本时，可以通过 JSB 反射调用宿主 Android 工程中的 Java 桥接类。桥接类由接入方放在自己的 Cocos Android 工程中，不需要修改 SmartedAdSdk。</p>
+<h2 id="1">1. 调用关系<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<pre><code class="language-text">Cocos Creator JavaScript / TypeScript
+    ↓ JSB reflection
+CocosSmartedAdBridge.java（宿主工程）
+    ↓
+SmartedAdSdk Android API
+    ↓
+MAX / AdMob / LevelPlay
+</code></pre>
+<p>广告平台、服务器通信、SmartedAdActivity、路由、加载与展示逻辑继续由 Android SDK 处理。</p>
+<h2 id="2-android-sdk">2. 添加 Android SDK 依赖<a class="headerlink" href="#2-android-sdk" title="Permanent link">&para;</a></h2>
+<p>在 Cocos Creator 构建出的 Android App 模块 <code>build.gradle</code> 中添加：</p>
+<pre><code class="language-groovy">dependencies {
+    implementation &quot;com.tripleadflow.smartad:smartedad:1.0.1&quot;
+}
+</code></pre>
+<p>使用本地 AAR 时，将文件放入 App 模块的 <code>libs/</code>，并添加：</p>
+<pre><code class="language-groovy">dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+}
+</code></pre>
+<p>不要重复引入冲突版本的 MAX、AdMob、LevelPlay 或相同联盟 Adapter。</p>
+<h2 id="3-androidmanifest">3. 配置 AndroidManifest<a class="headerlink" href="#3-androidmanifest" title="Permanent link">&para;</a></h2>
+<p>使用 AdMob 时，在 <code>&lt;application&gt;</code> 中配置：</p>
+<pre><code class="language-xml">&lt;meta-data
+    android:name=&quot;com.google.android.gms.ads.APPLICATION_ID&quot;
+    android:value=&quot;ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy&quot; /&gt;
+</code></pre>
+<h2 id="4-java">4. 添加 Java 桥接类<a class="headerlink" href="#4-java" title="Permanent link">&para;</a></h2>
+<p>把下面文件放入 Cocos Android App 模块：</p>
+<pre><code class="language-text">app/src/main/java/com/example/smartedbridge/CocosSmartedAdBridge.java
+</code></pre>
+<pre><code class="language-java">package com.example.smartedbridge;
+
+import android.app.Activity;
+
+import com.tripleadflow.smartad.InitializeCallback;
+import com.tripleadflow.smartad.SmartedAdSdk;
+import com.tripleadflow.smartad.interfacecallback.SmartedAdInterstitialEventListener;
+import com.tripleadflow.smartad.interfacecallback.SmartedAdRewardEventListener;
+
+import org.cocos2dx.lib.Cocos2dxActivity;
+import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
+import org.json.JSONObject;
+
+import java.lang.ref.WeakReference;
+
+public final class CocosSmartedAdBridge {
+    private static WeakReference&lt;Activity&gt; activityRef = new WeakReference&lt;&gt;(null);
+    private static boolean listenersRegistered;
+
+    private CocosSmartedAdBridge() {}
+
+    /** 在宿主 AppActivity.onCreate() 中调用一次。 */
+    public static void bind(Activity activity) {
+        activityRef = new WeakReference&lt;&gt;(activity);
+        if (activity != null) {
+            SmartedAdSdk.initActivity(activity);
+        }
+        registerListeners();
+    }
+
+    private static Activity activity() {
+        return activityRef.get();
+    }
+
+    public static void setLogEnabled(boolean enabled) {
+        SmartedAdSdk.setLogEnabled(enabled);
+    }
+
+    public static void initialize(String appId, String channelId) {
+        Activity activity = activity();
+        if (activity == null) {
+            emit(&quot;initFailure&quot;, &quot;&quot;, &quot;&quot;, &quot;Cocos Activity unavailable&quot;);
+            return;
+        }
+
+        registerListeners();
+        SmartedAdSdk.initialize(activity.getApplicationContext(), appId, channelId,
+                new InitializeCallback() {
+                    @Override public void initSuccess() {
+                        emit(&quot;initSuccess&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);
+                    }
+
+                    @Override public void initFailure(String reason) {
+                        emit(&quot;initFailure&quot;, &quot;&quot;, &quot;&quot;, reason);
+                    }
+                });
+    }
+
+    public static void loadInterstitial() {
+        Activity activity = activity();
+        if (activity != null) {
+            SmartedAdSdk.loadInterstitialAd(activity.getApplicationContext());
+        }
+    }
+
+    public static boolean isInterstitialReady() {
+        return SmartedAdSdk.AdInterstitialReady();
+    }
+
+    public static boolean showInterstitial() {
+        Activity activity = activity();
+        if (activity == null) return false;
+        SmartedAdSdk.initActivity(activity);
+        return SmartedAdSdk.showInterstitialAd(activity);
+    }
+
+    public static void loadReward() {
+        Activity activity = activity();
+        if (activity != null) {
+            SmartedAdSdk.loadRewardAd(activity.getApplicationContext());
+        }
+    }
+
+    public static boolean isRewardReady() {
+        return SmartedAdSdk.AdRewardReady();
+    }
+
+    public static boolean showReward() {
+        Activity activity = activity();
+        if (activity == null) return false;
+        SmartedAdSdk.initActivity(activity);
+        return SmartedAdSdk.showRewardAd(activity);
+    }
+
+    public static void destroy() {
+        SmartedAdSdk.setSmartedAdInterstitialEventListener(null);
+        SmartedAdSdk.setSmartedAdRewardEventListener(null);
+        listenersRegistered = false;
+        SmartedAdSdk.destroy();
+        activityRef.clear();
+    }
+
+    private static synchronized void registerListeners() {
+        if (listenersRegistered) return;
+        listenersRegistered = true;
+
+        SmartedAdSdk.setSmartedAdInterstitialEventListener(
+                new SmartedAdInterstitialEventListener() {
+                    @Override public void onInterstitialAdLoadedSuccess() {
+                        emit(&quot;interstitialLoaded&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);
+                    }
+                    @Override public void onInterstitialAdLoadedFailed(String errorinfo) {
+                        emit(&quot;interstitialLoadFailed&quot;, &quot;&quot;, &quot;&quot;, errorinfo);
+                    }
+                    @Override public void onInterstitialAdImpression() {
+                        emit(&quot;interstitialImpression&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);
+                    }
+                    @Override public void onInterstitialAdShowedSuccess(String platform, String placementId) {
+                        emit(&quot;interstitialShowed&quot;, platform, placementId, &quot;&quot;);
+                    }
+                    @Override public void onInterstitialAdShowedFailed(
+                            String platform, String placementId, String errorinfo) {
+                        emit(&quot;interstitialShowFailed&quot;, platform, placementId, errorinfo);
+                    }
+                    @Override public void onInterstitialAdClicked(String platform, String placementId) {
+                        emit(&quot;interstitialClicked&quot;, platform, placementId, &quot;&quot;);
+                    }
+                    @Override public void onInterstitialAdClosed(String platform, String placementId) {
+                        emit(&quot;interstitialClosed&quot;, platform, placementId, &quot;&quot;);
+                    }
+                });
+
+        SmartedAdSdk.setSmartedAdRewardEventListener(
+                new SmartedAdRewardEventListener() {
+                    @Override public void onRewardAdLoadedSuccess() {
+                        emit(&quot;rewardLoaded&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);
+                    }
+                    @Override public void onRewardAdLoadedFailed(String errorinfo) {
+                        emit(&quot;rewardLoadFailed&quot;, &quot;&quot;, &quot;&quot;, errorinfo);
+                    }
+                    @Override public void onRewardAdImpression() {
+                        emit(&quot;rewardImpression&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);
+                    }
+                    @Override public void onRewardAdShowedSuccess(String platform, String placementId) {
+                        emit(&quot;rewardShowed&quot;, platform, placementId, &quot;&quot;);
+                    }
+                    @Override public void onRewardAdShowedFailed(
+                            String platform, String placementId, String errorinfo) {
+                        emit(&quot;rewardShowFailed&quot;, platform, placementId, errorinfo);
+                    }
+                    @Override public void onRewardAdClicked(String platform, String placementId) {
+                        emit(&quot;rewardClicked&quot;, platform, placementId, &quot;&quot;);
+                    }
+                    @Override public void onRewardAdClosed(String platform, String placementId) {
+                        emit(&quot;rewardClosed&quot;, platform, placementId, &quot;&quot;);
+                    }
+                });
+    }
+
+    private static void emit(String event, String platform, String placementId, String error) {
+        Activity activity = activity();
+        if (!(activity instanceof Cocos2dxActivity)) return;
+
+        try {
+            JSONObject json = new JSONObject();
+            json.put(&quot;event&quot;, event == null ? &quot;&quot; : event);
+            json.put(&quot;platform&quot;, platform == null ? &quot;&quot; : platform);
+            json.put(&quot;placementId&quot;, placementId == null ? &quot;&quot; : placementId);
+            json.put(&quot;error&quot;, error == null ? &quot;&quot; : error);
+
+            // 同时兼容 Creator 2.x 的 window 与 Creator 3.x 的 globalThis。
+            String script = &quot;(function(){&quot;
+                    + &quot;var root=(typeof globalThis!=='undefined')?globalThis:&quot;
+                    + &quot;((typeof window!=='undefined')?window:this);&quot;
+                    + &quot;if(root.SmartedAdBridge&amp;&amp;root.SmartedAdBridge.onNativeEvent){&quot;
+                    + &quot;root.SmartedAdBridge.onNativeEvent(&quot;
+                    + JSONObject.quote(json.toString()) + &quot;);}})();&quot;;
+
+            ((Cocos2dxActivity) activity).runOnGLThread(
+                    () -&gt; Cocos2dxJavascriptJavaBridge.evalString(script));
+        } catch (Throwable ignored) {
+            // 桥接异常不能影响广告 SDK。
+        }
+    }
+}
+</code></pre>
+<h2 id="5-appactivity">5. 在 AppActivity 中绑定<a class="headerlink" href="#5-appactivity" title="Permanent link">&para;</a></h2>
+<p>找到 Cocos 项目的 <code>AppActivity</code>，在 <code>onCreate()</code> 中绑定当前 Activity：</p>
+<pre><code class="language-java">import android.os.Bundle;
+import com.example.smartedbridge.CocosSmartedAdBridge;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    CocosSmartedAdBridge.bind(this);
+}
+</code></pre>
+<h2 id="6-javascripttypescript">6. 添加 JavaScript/TypeScript 包装代码<a class="headerlink" href="#6-javascripttypescript" title="Permanent link">&para;</a></h2>
+<p>下面的写法同时兼容常见的 Creator 2.x <code>jsb.reflection</code> 和 Creator 3.x <code>native.reflection</code>：</p>
+<pre><code class="language-javascript">const SMARTED_BRIDGE = &quot;com/example/smartedbridge/CocosSmartedAdBridge&quot;;
+
+function androidReflection() {
+    if (typeof native !== &quot;undefined&quot; &amp;&amp; native.reflection) {
+        return native.reflection;
+    }
+    if (typeof jsb !== &quot;undefined&quot; &amp;&amp; jsb.reflection) {
+        return jsb.reflection;
+    }
+    return null;
+}
+
+function callAndroid(method, signature, ...args) {
+    const reflection = androidReflection();
+    if (!reflection) {
+        console.warn(&quot;SmartedAd Android bridge is unavailable&quot;);
+        return null;
+    }
+    return reflection.callStaticMethod(
+        SMARTED_BRIDGE,
+        method,
+        signature,
+        ...args
+    );
+}
+
+export const SmartedAds = {
+    setLogEnabled(enabled) {
+        callAndroid(&quot;setLogEnabled&quot;, &quot;(Z)V&quot;, enabled);
+    },
+
+    initialize(appId, channelId) {
+        callAndroid(
+            &quot;initialize&quot;,
+            &quot;(Ljava/lang/String;Ljava/lang/String;)V&quot;,
+            appId,
+            channelId
+        );
+    },
+
+    loadInterstitial() {
+        callAndroid(&quot;loadInterstitial&quot;, &quot;()V&quot;);
+    },
+
+    isInterstitialReady() {
+        return callAndroid(&quot;isInterstitialReady&quot;, &quot;()Z&quot;) === true;
+    },
+
+    showInterstitial() {
+        return callAndroid(&quot;showInterstitial&quot;, &quot;()Z&quot;) === true;
+    },
+
+    loadReward() {
+        callAndroid(&quot;loadReward&quot;, &quot;()V&quot;);
+    },
+
+    isRewardReady() {
+        return callAndroid(&quot;isRewardReady&quot;, &quot;()Z&quot;) === true;
+    },
+
+    showReward() {
+        return callAndroid(&quot;showReward&quot;, &quot;()Z&quot;) === true;
+    },
+
+    destroy() {
+        callAndroid(&quot;destroy&quot;, &quot;()V&quot;);
+    }
+};
+</code></pre>
+<p>如果修改 Java 包名，必须同时修改 Java 的 <code>package</code>、文件目录和脚本中的 <code>SMARTED_BRIDGE</code>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
